@@ -1,47 +1,18 @@
-import { useState, useEffect } from "react";
+import React from "react";
 
-function Random() {
- 
-    const [qoutes, setQoutes] = useState([]);
+function Random(props) {
+ console.log(props);
+  // const {title, image} = props.data 
 
-    useEffect( ()=> {
-      const Api = "https://api.quotable.io/random";
-  
-      async function getData(){
-  
-    try {
-        const res = await fetch( `${Api}`);
-        const data = await res.json();
-        console.log(data);
-        setQoutes(data)
-    }
-  
-  catch(error) {
-      console.error(error)
-  }}
-          getData();
-  
-    }, []);
-
-        const display = ()=> {
-            return(
-                <div>
-            <p>{qoutes.content}</p>
-            <h2>{qoutes.author}</h2>
-            </div>
-            );
-        }
-
-
-
-
+  const {author, content}= props.Myqoute;
 
     return(
 
         <div className="container">
         <section>
-            
-            <button onClick={display}> Get Quote</button>
+            <p>{content}</p>
+            <h2>~{author}</h2>
+            <button> Get Quote</button>
         </section>
     </div> 
     );
